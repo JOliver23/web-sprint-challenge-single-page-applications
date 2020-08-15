@@ -11,7 +11,27 @@ export default function Form() {
         size: "",
         special: "",
         toppings: ""
-        
+    });
+
+    const [errors, setErrors] = useState({
+        name: "",
+        address: "",
+        size: "",
+        special: "",
+        toppings: ""
+    });
+
+    const formSchema = yup.object().shape({
+        name: yup.string().required("Name is required"),
+        address: yup.string(),
+        size: yup.string().required("Please select a size"),
+        pepperoni: yup.boolean(),
+        sausage: yup.boolean(),
+        olive: yup.boolean(),
+        pineapple: yup.boolean(),
+        mushroom: yup.boolean(),
+        bacon: yup.boolean(),
+        special: yup.string()
     });
 
     return(
