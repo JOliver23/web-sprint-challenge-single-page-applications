@@ -4,8 +4,111 @@ import axios from "axios";
 
 export default function Form() {
     return(
+    <div>
+        
+    <form>
+        <h2>Build Your Own Pizza</h2>
         <div>
-            Hi
+            <label htmlFor="name">
+                Name
+                <input
+                    type="text"
+                    id="name"
+                    name="name"    
+                    />
+                    
+            </label>
+            
+            <br />
+            
+            <label htmlFor="address">
+                    Delivery Address
+                    <input 
+                        type="text"
+                        id="address"
+                        name="address"
+                    />
+            </label>
+
+            <br />
+
+            <label htmlFor="size">
+                Select Size
+                <select id="size" name="size">
+                    <option value="small">Small 7" </option>
+                    <option value="medium">Medium 10"</option>
+                    <option value="large">Large 14"</option>
+                    <option value="x-large">X-Large 18"</option>
+                </select>
+            </label>
+
+            <br />
+
+            <label htmlFor="toppings" className="toppings">
+                Select Toppings
+                <br />
+
+                <input 
+                type="checkbox" 
+                name="pepperoni"  
+                value="pepperoni"/>
+                <span>Pepperoni</span>
+
+                <br />
+
+                <input 
+                type="checkbox" 
+                name="sausage"  
+                value="sausage"/>
+                <span>Sausage</span>
+                
+                <br />
+
+                <input 
+                type="checkbox" 
+                name="olive" 
+                value="Olive"/>
+                <span>Olive</span>
+
+                <br />
+                
+                <input 
+                type="checkbox" 
+                name="bacon" 
+                value="bacon"/>
+                <span>Bacon</span>
+
+                <br />
+                
+                <input 
+                type="checkbox" 
+                name="pineapple"  
+                value="pineapple"/>
+                <span>Pineapple</span>
+
+                <br />
+
+                <input 
+                type="checkbox" 
+                name="mushroom"
+                value="mushroom"/>
+                <span>Mushroom</span>
+            </label>
+            <br />
+            <label htmlFor="special">
+                Special Instructions
+                <br />
+
+                <textarea 
+                    name="special"
+                    
+                />
+            </label>
+            <br />
+
+            <button type="submit">Submit Order</button> 
         </div>
+    </form>
+</div>
     )
 }
