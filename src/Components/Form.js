@@ -34,6 +34,39 @@ export default function Form() {
         special: yup.string()
     });
 
+    useEffect(() => {
+        formSchema.isValid(formState).then(valid => {
+            console.log("valid?", valid)
+        })
+    }, [formState]);
+
+    const formSubmit = e => {
+        e.preventDefault();
+        axios
+        .post("https://reqres.in/api/users", formState)
+        .then(response => {
+            setOrder(formState);
+            alert(`Order submitted successfully! Thanks, ${formState.name}, your pizza is being prepared!!`);
+            setFormState({
+                name: "",
+                address: "",
+                size: "",
+                toppings: "",
+                special: ""
+            });   
+        })
+
+        const inputChange = e => {
+            e.persist();
+            const newOrderData = {
+                ...formState,
+                [e.target.name]:
+                e.target.type === "checkbox" ? e.target.checked : e.target.value
+            };
+            validateChange(e)
+            setFormState(newOrderData)
+        }
+
     const validateChange = e => {
         yup
         .reach(formSchema, e.target.name)
@@ -60,6 +93,7 @@ export default function Form() {
                     id="name"
                     name="name"    
                     value={formState.name}
+                    onChange={inputChange}
                     />
                     
             </label>
@@ -73,6 +107,7 @@ export default function Form() {
                         id="address"
                         name="address"
                         value={formState.address}
+                        onChange={inputChange}
                     />
             </label>
 
@@ -80,7 +115,7 @@ export default function Form() {
 
             <label htmlFor="size">
                 Select Size
-                <select id="size" name="size">
+                <select id="size" name="size" value={formState.size} onChange={inputChange}>
                     <option value="small">Small 7" </option>
                     <option value="medium">Medium 10"</option>
                     <option value="large">Large 14"</option>
@@ -97,7 +132,9 @@ export default function Form() {
                 <input 
                 type="checkbox" 
                 name="pepperoni"  
-                value="pepperoni"/>
+                value="pepperoni"
+                onChange={inputChange}/>
+                
                 <span>Pepperoni</span>
 
                 <br />
@@ -105,7 +142,9 @@ export default function Form() {
                 <input 
                 type="checkbox" 
                 name="sausage"  
-                value="sausage"/>
+                value="sausage"
+                onChange={inputChange}/>
+                
                 <span>Sausage</span>
                 
                 <br />
@@ -113,7 +152,9 @@ export default function Form() {
                 <input 
                 type="checkbox" 
                 name="olive" 
-                value="Olive"/>
+                value="Olive"
+                onChange={inputChange}/>
+                
                 <span>Olive</span>
 
                 <br />
@@ -121,7 +162,9 @@ export default function Form() {
                 <input 
                 type="checkbox" 
                 name="bacon" 
-                value="bacon"/>
+                value="bacon"
+                onChange={inputChange}/>
+                
                 <span>Bacon</span>
 
                 <br />
@@ -129,7 +172,8 @@ export default function Form() {
                 <input 
                 type="checkbox" 
                 name="pineapple"  
-                value="pineapple"/>
+                value="pineapple"
+                onChange={inputChange}/>
                 <span>Pineapple</span>
 
                 <br />
@@ -137,7 +181,8 @@ export default function Form() {
                 <input 
                 type="checkbox" 
                 name="mushroom"
-                value="mushroom"/>
+                value="mushroom"
+                onChange={inputChange}/>
                 <span>Mushroom</span>
             </label>
             <br />
@@ -148,6 +193,7 @@ export default function Form() {
                 <textarea 
                     name="special"
                     value={formState.special}
+                    onChange={inputChange}
                 />
             </label>
             <br />
