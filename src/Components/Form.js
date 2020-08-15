@@ -3,6 +3,17 @@ import * as yup from "yup";
 import axios from "axios";
 
 export default function Form() {
+    const [order, setOrder] =useState([]);
+
+    const [formState, setFormState] = useState({
+        name: "",
+        address: "",
+        size: "",
+        special: "",
+        toppings: ""
+        
+    });
+    
     return(
     <div>
         
