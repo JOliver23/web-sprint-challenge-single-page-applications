@@ -13,7 +13,7 @@ export default function Form() {
         toppings: ""
         
     });
-    
+
     return(
     <div>
         
@@ -26,6 +26,7 @@ export default function Form() {
                     type="text"
                     id="name"
                     name="name"    
+                    value={formState.name}
                     />
                     
             </label>
@@ -38,6 +39,7 @@ export default function Form() {
                         type="text"
                         id="address"
                         name="address"
+                        value={formState.address}
                     />
             </label>
 
@@ -112,7 +114,7 @@ export default function Form() {
 
                 <textarea 
                     name="special"
-                    
+                    value={formState.special}
                 />
             </label>
             <br />
