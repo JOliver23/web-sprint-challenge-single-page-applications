@@ -4,6 +4,17 @@ import Form from "./Components/Form";
 import Home from "./Components/Home";
 
 const App = () => {
+  const [order, setOrder] = useState([]);
+
+  const addMyOrder = order => {
+    const newOrder = {
+      id: Date.now(),
+      name: order.name,
+      address: order.address
+    };
+    setOrder([...order, newOrder])
+  };
+
   return (
     <div>
       <nav>
@@ -15,7 +26,7 @@ const App = () => {
 
       <Switch>
         <Route path="/pizza">
-          <Form />
+          <Form order={addMyOrder}/>
         </Route>
 
         <Route path="/">
