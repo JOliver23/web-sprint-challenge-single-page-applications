@@ -93,6 +93,7 @@ export default function Form() {
                     type="text"
                     id="name"
                     name="name"    
+                    data-cy="name"
                     value={formState.name}
                     onChange={inputChange}
                 />
@@ -142,7 +143,8 @@ export default function Form() {
 
                 <input 
                 type="checkbox" 
-                name="sausage"  
+                name="sausage" 
+                data-cy="sausage"
                 value="sausage"
                 onChange={inputChange}/>
                 
