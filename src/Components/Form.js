@@ -55,7 +55,7 @@ export default function Form() {
                 special: ""
             });   
         })
-
+    }
         const inputChange = e => {
             e.persist();
             const newOrderData = {
@@ -83,7 +83,7 @@ export default function Form() {
     return(
     <div>
         
-    <form>
+    <form onSubmit={formSubmit}>
         <h2>Build Your Own Pizza</h2>
         <div>
             <label htmlFor="name">
@@ -200,6 +200,8 @@ export default function Form() {
 
             <button type="submit">Submit Order</button> 
         </div>
+
+        <pre>{JSON.stringify(order, 2, null)}</pre>
     </form>
 </div>
     )
