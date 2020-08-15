@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import Form from "./Components/Form";
 import Home from "./Components/Home";
+import { SCon, SNav, WelcomeSign, Title1, NavBtn } from "./Styled/StyledComps";
 
 const App = () => {
   const [order, setOrder] = useState([]);
@@ -16,16 +17,20 @@ const App = () => {
   };
 
   return (
-    <div>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/pizza">Order Now!</Link>
-      </nav>
+    <SCon>
+      <SNav>
+        <Link to="/">
+          <NavBtn>Home</NavBtn>
+          </Link>
+        <Link to="/pizza">
+          <NavBtn>Order Now!</NavBtn>
+          </Link>
+      </SNav>
       
-      <div className="title-banner">
-        <h1>Lambda Eats</h1>
+      <WelcomeSign className="title-banner">
+        <Title1>Lambda Eats</Title1>
         <p>You can remove this code and create your own header</p>
-      </div>
+      </WelcomeSign>
       
       <Switch>
         <Route path="/pizza">
@@ -37,7 +42,7 @@ const App = () => {
         </Route>
       </Switch>
       
-    </div>
+    </SCon>
   );
 };
 export default App;

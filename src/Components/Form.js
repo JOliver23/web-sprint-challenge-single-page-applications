@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import { SForm, MenuDiv} from "../Styled/StyledComps";
 
 export default function Form() {
     const [order, setOrder] =useState([]);
@@ -22,8 +23,8 @@ export default function Form() {
     });
 
     const formSchema = yup.object().shape({
-        name: yup.string().required("Name is required"),
-        address: yup.string(),
+        name: yup.string().min(2).required("Name is required"),
+        address: yup.string().required("add address please"),
         size: yup.string().required("Please select a size"),
         pepperoni: yup.boolean(),
         sausage: yup.boolean(),
@@ -83,9 +84,9 @@ export default function Form() {
     return(
     <div>
         
-    <form onSubmit={formSubmit}>
+    <SForm onSubmit={formSubmit}>
         <h2>Build Your Own Pizza</h2>
-        <div>
+        <MenuDiv>
             <label htmlFor="name">
                 Name
                 <input
@@ -94,8 +95,8 @@ export default function Form() {
                     name="name"    
                     value={formState.name}
                     onChange={inputChange}
-                    />
-                    
+                />
+                {errors.name.length > 2 ? <p className="error">{errors.name}</p> : null}    
             </label>
             
             <br />
@@ -199,10 +200,13 @@ export default function Form() {
             <br />
 
             <button type="submit">Submit Order</button> 
-        </div>
+        </MenuDiv>
 
+    </SForm>
+
+    <p>
         <pre>{JSON.stringify(order, 2, null)}</pre>
-    </form>
+    </p>
 </div>
     )
 }
