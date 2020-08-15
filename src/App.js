@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { Route, Switch, Link } from "react-router-dom";
-import Form from "./Form";
-import Home from "./Home";
+import Form from "./Components/Form";
+import Home from "./Components/Home";
 
 const App = () => {
   return (
